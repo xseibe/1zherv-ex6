@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 using Cysharp.Threading.Tasks;
 using JetBrains.Annotations;
+using Unity.VisualScripting;
 
 /// <summary> Primary user interface manager. </summary>
 public class InventoryManager : MonoBehaviour
@@ -134,7 +135,7 @@ public class InventoryManager : MonoBehaviour
         mItemDetailName = itemDetails.Q<Label>("ItemDetailName");
         mItemDetailDescription = itemDetails.Q<Label>("ItemDetailDescription");
         mItemDetailCost = itemDetails.Q<Label>("ItemDetailCost");
-        
+
         /*
          * Task 2c: Link the Button
          *
@@ -153,9 +154,9 @@ public class InventoryManager : MonoBehaviour
          * this is that whenever we press the button, CreateItem() will
          * be called.
          */
-        
-        
-        
+
+        mItemCreateButton = itemDetails.Q<Button>("ItemDetailButtonCreate");
+        mItemCreateButton.clicked += () => CreateItem();
         
         await UniTask.WaitForEndOfFrame();
 
@@ -356,11 +357,22 @@ public class InventoryManager : MonoBehaviour
         
         if (item == null)
         { // We have no item selected -> Provide some default information.
+            mItemDetailName.text = string.Empty;
+            mItemDetailDescription.text = "Select any available item.";
+            mItemDetailCost.text = string.Empty;
         }
         else
         { // We have item selected -> Use the item information.
+            mItemDetailName.text = item.definition.readableName;
+            mItemDetailDescription.text = item.definition.readableDescription;
+            mItemDetailCost.text = item.definition.cost.ToString();
+
+            if(availableCurrency < item.definition.cost)
+                mItemCreateButton.SetEnabled(false);
+            else
+                mItemCreateButton.SetEnabled(true);
         }
-        
+
         selectedItem = item;
     }
 
@@ -391,8 +403,18 @@ public class InventoryManager : MonoBehaviour
          * it from the cost (itemDefinition.cost) from availableCurrency property.
          * These items are not cheap to make!
          */
-        
+
+        if (selectedItem == null)
+            return false;
+
         var itemDefinition = selectedItem?.definition;
+
+        if (itemDefinition.cost <= availableCurrency)
+        {
+            Instantiate(itemDefinition.prefab, createDestination.transform);
+            availableCurrency -= itemDefinition.cost;
+            return true;
+        }
         
         return false;
     }
