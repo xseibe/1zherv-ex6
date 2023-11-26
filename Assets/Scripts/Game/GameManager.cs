@@ -169,7 +169,7 @@ public class GameManager : MonoBehaviour
 #if (UNITY_EDITOR)
         UnityEditor.EditorApplication.isPlaying = false;
 #elif (UNITY_WEBPLAYER || UNITY_WEBGL)
-        Application.OpenURL("about:blank");
+        Application.ExternalEval("document.location.reload(true)");
 #else // !UNITY_WEBPLAYER
         Application.Quit();
 #endif
