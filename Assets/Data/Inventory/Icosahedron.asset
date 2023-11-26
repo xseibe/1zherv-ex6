@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2133400072f95a2449b36de2bf5081af, type: 3}
+  m_Name: Icosahedron
+  m_EditorClassIdentifier: 
+  id: 714d5e6c-b06f-446f-8931-bbb0c7de5d7a
+  readableName: Icosahedron
+  readableDescription: Icosahedron is a convex polyhedron with 20 faces, 30 edges
+    and 12 vertices. It is one of the five Platonic solids, and the one with the
+    MOST faces.
+  cost: 16
+  prefab: {fileID: 6185708906390784424, guid: e902d5b4d34ec7a44b18c0de1d2fabec, type: 3}

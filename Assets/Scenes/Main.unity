@@ -450,13 +450,13 @@ MonoBehaviour:
   mSkinWidth: 0.02
   platformMask:
     serializedVersion: 2
-    m_Bits: 7168
+    m_Bits: 3072
   triggerMask:
     serializedVersion: 2
     m_Bits: 0
   oneWayPlatformMask:
     serializedVersion: 2
-    m_Bits: 4096
+    m_Bits: 0
   slopeLimit: 50
   jumpingThreshold: 0.07
   slopeSpeedMultiplier:
@@ -645,6 +645,7 @@ MonoBehaviour:
   - definition: {fileID: 11400000, guid: e390f8498e11c12428c535305ce1ef63, type: 2}
   - definition: {fileID: 11400000, guid: a8f10d9350e1ac54a85650d7911b64ba, type: 2}
   - definition: {fileID: 11400000, guid: c40c76109cac301419a35d2f2df72493, type: 2}
+  - definition: {fileID: 11400000, guid: 4cd1119080b1b624e8914cc17e7c4530, type: 2}
   inventoryDimension: {x: 0, y: 0}
 --- !u!114 &291797075
 MonoBehaviour:
@@ -1684,9 +1685,9 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.0727323
+    x: 0.078330874
     y: 0
-    width: 0.8545354
+    width: 0.84333825
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
